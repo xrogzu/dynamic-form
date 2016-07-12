@@ -9,9 +9,9 @@
 		<!-- 动态字段在http上参数的约定前缀,默认为custom_ -->
 		<property name="dynamicFieldHttpParameterPrefix" value="custom_"></property>
 		<!-- 文件类别定义xml配置文件位置 -->
-		<property name="fieldTypeConfigLocation" value=""></property>
+		<property name="fieldTypeConfigLocation" value="fieldTypes.xml"></property>
 		<!-- 模板位置 -->
-		<property name="templateLocation" value="templateLocation"></property>
+		<property name="templateLocation" value="template"></property>
 		<!-- 数据源支持 -->
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>

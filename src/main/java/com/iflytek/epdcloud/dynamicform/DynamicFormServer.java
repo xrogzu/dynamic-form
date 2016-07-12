@@ -41,7 +41,7 @@ public class DynamicFormServer {
 
     public void init() {
         fieldTypeHolder = new FieldTypeHolder(fieldTypeConfigLocation);
-        dynamicFormDao = new DynamicFormDao();
+        dynamicFormDao = new DynamicFormDao(dataSource);
         // 初始化freemarkerRender
         FreemarkerRender.init(templateLocation);
     }
@@ -91,7 +91,7 @@ public class DynamicFormServer {
      * @return
      */
     public Form get(String formId) {
-        return null;
+        return dynamicFormDao.get(formId);
     }
 
     /**
