@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fieldTypes>
+	<fieldType>
+		<name>日期输入框</name>
+		<code>date</code>
+		<description>日期输入框</description>
+		<className>com.iflytek.epdcloud.DateTimeField</className>
+		<configTemplate>/fileType/datetime/config.html</configTemplate>
+		<editTemplate>/file-type/datetime/edit.html</editTemplate>
+	</fieldType>
+	<fieldType>
+		<name>文本输入框</name>
+		<code>text</code>
+		<description>文本输入框</description>
+		<className>com.iflytek.epdcloud.TextField</className>
+		<configTemplate>/fileType/text/config.html</configTemplate>
+		<editTemplate>/file-type/text/edit.html</editTemplate>
+	</fieldType>
+	<fieldType>
+		<name>复选框</name>
+		<code>checkbox</code>
+		<description>复选框</description>
+		<className>com.iflytek.epdcloud.CheckBoxField</className>
+		<configTemplate>/fileType/checkbox/config.html</configTemplate>
+		<editTemplate>/file-type/checkbox/edit.html</editTemplate>
+	</fieldType>
+</fieldTypes>

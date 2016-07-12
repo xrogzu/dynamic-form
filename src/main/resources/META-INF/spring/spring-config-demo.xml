@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	<!-- 动态表单spring配置 -->
+	<bean id="dynamicFormServer" class="com.iflytek.epdcloud.dynamicform.DynamicFormServer">
+		<!-- 动态字段在http上参数的约定前缀,默认为custom_ -->
+		<property name="dynamicFieldHttpParameterPrefix" value="custom_"></property>
+		<!-- 文件类别定义xml配置文件位置 -->
+		<property name="fieldTypeConfigLocation" value=""></property>
+		<!-- 模板位置 -->
+		<property name="templateLocation" value="templateLocation"></property>
+		<!-- 数据源支持 -->
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+</beans>

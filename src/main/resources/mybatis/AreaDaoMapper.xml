@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.iflytek.epdcloud.eduarchive.dao.AreaDao">
+	<sql id="area_row">
+		t_area.id AS id,
+		t_area.areaCode AS areaCode,
+		t_area.areaName AS areaName,
+		t_area.type AS type,
+		t_area.countryId AS countryId,
+		t_area.provinceId AS provinceId,
+		t_area.cityId AS cityId,
+		t_area.delFlag AS delFlag
+	</sql>
+	<sql id="select_clause">
+		SELECT
+			<include refid="area_row"/>
+		FROM t_area
+	</sql>
+	<sql id="where_clause">
+		<where>  
+			1=1
+		</where>
+	</sql>
+	
+	<!-- 获取所在区域下的全部区域，！目前只支持二级！（重要） -->
+	<select id="getRightAreas" resultType="com.iflytek.epdcloud.eduarchive.model.Area" parameterType="com.iflytek.epdcloud.eduarchive.model.Area">
+		<include refid="select_clause"/>
+		WHERE
+			t_area.id = #{areaId}
+		or  t_area.countryid = #{areaId}
+		or	t_area.provinceid = #{areaId}
+		or	t_area.cityid = #{areaId}
+		Order By t_area.id
+	</select>
+	<!--徐东添加-->
+	<resultMap id="BaseResultMap" type="com.iflytek.epdcloud.eduarchive.model.Area" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="delFlag" property="delFlag"  />
+    <result column="areaCode" property="areaCode" jdbcType="VARCHAR" />
+    <result column="areaName" property="areaName" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="countryId" property="countryId" jdbcType="BIGINT" />
+    <result column="provinceId" property="provinceId" jdbcType="BIGINT" />
+    <result column="cityId" property="cityId" jdbcType="BIGINT" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="createUserId" property="createuserid" jdbcType="INTEGER" />
+    <result column="updateUserId" property="updateuserid" jdbcType="INTEGER" />
+  </resultMap>
+	
+<resultMap id="NewResultMap" type="com.iflytek.epdcloud.eduarchive.model.Area" >
+    <id column="id" property="id"   />
+    <result column="areaName" property="areaName"   />
+        <result column="areaCode" property="areaCode"   />
+    <result column="type" property="type"  />
+    <result column="countryId" property="countryId"   />
+    <result column="provinceId" property="provinceId"   />
+    <result column="cityId" property="cityId"   />
+    <result column="cityName" property="cityName"   />
+  </resultMap>
+	
+	<resultMap type="com.iflytek.epdcloud.eduarchive.model.Area" id="areaMap">
+			 <id column="id" property="id" jdbcType="BIGINT" />
+			<result column="area_name" property="areaName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 包含深证市 -->
+	<select id="qureyAreabycityId" parameterType="int" resultMap="areaMap">
+			select id,areaName from t_area where cityid = #{cityId} or id = #{cityId}
+	</select>
+	<!-- 不包含深圳市 -->
+	<select id="qureyAreabycityIdNoSz" parameterType="int" resultMap="areaMap">
+			select id,areaName from t_area where cityid = #{cityId} and id != #{cityId}
+	</select>
+	<!--徐东添加-->
+	<!-- 王雄杰添加 -->
+	<select id="getArea" resultMap="areaMap">
+			select id,areaName from t_area where id=#{id}
+	</select>
+	<select id="getAddArea"  resultMap="areaMap" parameterType="com.iflytek.epdcloud.eduarchive.model.Area">
+		select 
+		t_area.id AS id,
+		t_area.areaCode AS areaCode,
+		t_area.areaName AS areaName,
+		t_area.type AS type,
+		t_area.countryId AS countryId,
+		t_area.provinceId AS provinceId,
+		t_area.cityId AS cityId,
+		t_area.delFlag AS delFlag
+		from t_area		
+		WHERE
+			(t_area.id = #{id}
+		or  t_area.countryid = #{id}
+		or	t_area.provinceid = #{id}
+		or	t_area.cityid = #{id})
+		<if test="type!=null and type!=''">
+		and t_area.type = #{type}
+		</if>	
+		Order By t_area.id
+	</select>
+	<!-- 王雄杰添加 -->
+	
+	<!-- 分页查询教师信息 -->
+	<select id="get" resultMap="NewResultMap" parameterType="int">
+		select
+		t.id AS id,
+		t.areaCode AS areaCode,
+		t.areaName AS areaName,
+		t.type AS type,
+		t.countryId AS countryId,
+		t.provinceId AS provinceId,
+		t.cityId AS cityId,
+		(select areaName from t_area t2 where id= t.cityId ) cityName
+		 from t_area  t where id = #{areaId}
+	</select>
+</mapper> 
