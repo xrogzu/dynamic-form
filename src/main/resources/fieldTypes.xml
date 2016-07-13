@@ -11,7 +11,7 @@
 	<fieldType>
 		<name>文本输入框</name>
 		<code>text</code>
-		<description>文本输入框</description>
+		<description>单行文本输入框</description>
 		<className>com.iflytek.epdcloud.TextField</className>
 		<configTemplate>/fileType/text/config.html</configTemplate>
 		<editTemplate>/file-type/text/edit.html</editTemplate>
@@ -23,5 +23,13 @@
 		<className>com.iflytek.epdcloud.CheckBoxField</className>
 		<configTemplate>/fileType/checkbox/config.html</configTemplate>
 		<editTemplate>/file-type/checkbox/edit.html</editTemplate>
+	</fieldType>
+	<fieldType>
+		<name>多行文本输入框</name>
+		<code>textarea</code>
+		<description>多行文本输入框</description>
+		<className>com.iflytek.epdcloud.TextAreaField</className>
+		<configTemplate>/fileType/textarea/config.html</configTemplate>
+		<editTemplate>/file-type/textarea/edit.html</editTemplate>
 	</fieldType>
 </fieldTypes>
