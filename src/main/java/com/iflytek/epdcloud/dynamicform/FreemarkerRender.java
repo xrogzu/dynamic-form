@@ -3,7 +3,6 @@
  */
 package com.iflytek.epdcloud.dynamicform;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -25,15 +24,8 @@ public class FreemarkerRender {
     static void init(String templateLocation) {
         // 1.创建配置实例Cofiguration
         cfg = new Configuration();
-        try {
-            cfg.setDirectoryForTemplateLoading(new File("src/template"));
-            init = true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            init = false;
-            System.exit(-1);
-        }
-
+        cfg.setClassForTemplateLoading(FreemarkerRender.class, "template/");
+        init = true;
     }
 
 

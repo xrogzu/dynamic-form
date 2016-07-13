@@ -46,14 +46,6 @@ public abstract class Field extends Entity {
      */
     private String            defaultValue;
     /**
-     * 宽度
-     */
-    private short             width;
-    /**
-     * 高度
-     */
-    private short             height;
-    /**
      * 顺序
      */
     private int               sequence;
@@ -190,42 +182,6 @@ public abstract class Field extends Entity {
      */
     public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
-    }
-
-
-
-    /**
-     * @return the width
-     */
-    public short getWidth() {
-        return this.width;
-    }
-
-
-
-    /**
-     * @param width the width to set
-     */
-    public void setWidth(short width) {
-        this.width = width;
-    }
-
-
-
-    /**
-     * @return the height
-     */
-    public short getHeight() {
-        return this.height;
-    }
-
-
-
-    /**
-     * @param height the height to set
-     */
-    public void setHeight(short height) {
-        this.height = height;
     }
 
 

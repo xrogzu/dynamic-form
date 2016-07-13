@@ -10,6 +10,25 @@ package com.iflytek.epdcloud.dynamicform.entity;
  * @date 2016年7月11日
  */
 public class TextField extends Field {
-    private int maxSize;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 9129633277768057353L;
+    private int               maxSize;
+
+    /**
+     * @return the maxSize
+     */
+    public int getMaxSize() {
+        return this.maxSize;
+    }
+
+    /**
+     * @param maxSize the maxSize to set
+     */
+    public void setMaxSize(int maxSize) {
+        this.maxSize = maxSize;
+    }
+
 
 }

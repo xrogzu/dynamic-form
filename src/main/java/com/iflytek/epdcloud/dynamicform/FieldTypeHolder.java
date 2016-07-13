@@ -54,8 +54,8 @@ class FieldTypeHolder {
             name = element.element("code").getText();
             description = element.element("description").getText();
             className = element.element("className").getText();
-            configTemplate = element.element("className").getText();
-            editTemplate = element.element("className").getText();
+            configTemplate = element.element("configHtml").getText();
+            editTemplate = element.element("editHtml").getText();
             fieldType =
                     new FieldType(name, code, description, className, configTemplate, editTemplate);
             fieldTypes.add(fieldType);
